@@ -1,4 +1,4 @@
-{
+main_menu  = {
   "type": "carousel",
   "contents": [
     {

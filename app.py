@@ -12,23 +12,16 @@ from utils import send_text_message
 
 load_dotenv()
 
-
 machine = TocMachine(
-    states=["user", "state1", "state2"],
+    states=["user", "mainmenu", "introduction", "keep_accounts", "watch_chart", "watch_balance"],
     transitions=[
-        {
-            "trigger": "advance",
-            "source": "user",
-            "dest": "state1",
-            "conditions": "is_going_to_state1",
-        },
-        {
-            "trigger": "advance",
-            "source": "user",
-            "dest": "state2",
-            "conditions": "is_going_to_state2",
-        },
-        {"trigger": "go_back", "source": ["state1", "state2"], "dest": "user"},
+        {"trigger": "advance", "source": "user", "dest": "mainmenu", "conditions": "is_going_to_mainmenu"},
+        {"trigger": "advance", "source": "mainmenu", "dest": "mainmenu", "conditions": "is_going_to_mainmenu"},
+        {"trigger": "advance", "source": "mainmenu", "dest": "introduction", "conditions": "is_going_to_introduction"},
+        {"trigger": "advance", "source": "mainmenu", "dest": "keep_accounts", "conditions": "is_going_to_keep_accounts"},
+        {"trigger": "advance", "source": "mainmenu", "dest": "watch_chart", "conditions": "is_going_to_watch_chart"},
+        {"trigger": "advance", "source": "mainmenu", "dest": "watch_balance", "conditions": "is_going_to_watch_balance"},
+        {"trigger": "go_back", "source": ["introduction", "keep_accounts", "watch_chart", "watch_balance"], "dest": "user"},
     ],
     initial="user",
     auto_transitions=False,

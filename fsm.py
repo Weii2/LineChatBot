@@ -2,6 +2,7 @@ from transitions.extensions import GraphMachine
 
 from utils import send_text_message
 
+import template
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
@@ -29,14 +30,14 @@ class TocMachine(GraphMachine):
 
     def on_enter_mainmenu(self, event):
         reply_token = event.reply_token
-        message = message_template.main_menu
+        message = template.main_menu
         message_to_reply = FlexSendMessage("開啟主選單", message)
         line_bot_api = LineBotApi( os.getenv('LINE_CHANNEL_ACCESS_TOKEN') )
         line_bot_api.reply_message(reply_token, message_to_reply)
-
+'''
     def on_enter_introduction(self, event):
         reply_token = event.reply_token
-        message = message_template.introduction_message
+        message = template.introduction_message
         message_to_reply = FlexSendMessage("開啟功能介紹", message)
         line_bot_api = LineBotApi( os.getenv('LINE_CHANNEL_ACCESS_TOKEN') )
         line_bot_api.reply_message(reply_token, message_to_reply)
@@ -65,3 +66,4 @@ class TocMachine(GraphMachine):
         line_bot_api = LineBotApi( os.getenv('LINE_CHANNEL_ACCESS_TOKEN') )
         line_bot_api.reply_message(reply_token, message_to_reply)
         self.go_back()
+'''
