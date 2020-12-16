@@ -1,4 +1,4 @@
-main_menu  = {
+main_menu = {
   "type": "carousel",
   "contents": [
     {
@@ -37,6 +37,28 @@ main_menu  = {
         "type": "box",
         "layout": "vertical",
         "contents": []
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "記帳",
+              "text": "記帳"
+            },
+            "color": "#ffffff",
+            "offsetBottom": "sm"
+          },
+          {
+            "type": "spacer",
+            "size": "xs"
+          }
+        ],
+        "backgroundColor": "#ff9900",
+        "offsetTop": "lg"
       }
     },
     {
@@ -45,6 +67,28 @@ main_menu  = {
         "type": "box",
         "layout": "vertical",
         "contents": []
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "查看收支圖表",
+              "text": "功能介紹"
+            },
+            "color": "#ffffff",
+            "offsetBottom": "sm"
+          },
+          {
+            "type": "spacer",
+            "size": "xs"
+          }
+        ],
+        "backgroundColor": "#ff9900",
+        "offsetTop": "lg"
       }
     },
     {
@@ -53,6 +97,28 @@ main_menu  = {
         "type": "box",
         "layout": "vertical",
         "contents": []
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "本月目前結餘",
+              "text": "功能介紹"
+            },
+            "color": "#ffffff",
+            "offsetBottom": "sm"
+          },
+          {
+            "type": "spacer",
+            "size": "xs"
+          }
+        ],
+        "backgroundColor": "#ff9900",
+        "offsetTop": "lg"
       }
     }
   ]
