@@ -76,10 +76,11 @@ def callback():
             continue
         if not isinstance(event.message, TextMessage):
             continue
-
-        line_bot_api.reply_message(
-            event.reply_token, TextSendMessage(text=event.message.text)
-        )
+        if not isinstance(event.message.text, str):
+            continue
+        response = machine.advance(event)
+        if response == False:
+            send_text_message(event.reply_token, "Not Entering any State")
     return "OK"
 
 @app.route("/webhook", methods=["POST"])
