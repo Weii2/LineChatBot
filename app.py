@@ -13,7 +13,7 @@ from utils import send_text_message
 load_dotenv()
 
 machine = TocMachine(
-    states=["user", "mainmenu", "introduction", "keep_accounts", "watch_chart", "watch_balance"],
+    states=["user", "mainmenu", "introduction", "keep_accounts", "spending_mode", "earning_mode", "enter_spending", "enter_earning", "edit", "edit_data", "watch_chart", "watch_balance", "watch_video"],
     transitions=[
         {"trigger": "advance", "source": "user", "dest": "mainmenu", "conditions": "is_going_to_mainmenu"},
         {"trigger": "advance", "source": "mainmenu", "dest": "mainmenu", "conditions": "is_going_to_mainmenu"},
@@ -21,7 +21,17 @@ machine = TocMachine(
         {"trigger": "advance", "source": "mainmenu", "dest": "keep_accounts", "conditions": "is_going_to_keep_accounts"},
         {"trigger": "advance", "source": "mainmenu", "dest": "watch_chart", "conditions": "is_going_to_watch_chart"},
         {"trigger": "advance", "source": "mainmenu", "dest": "watch_balance", "conditions": "is_going_to_watch_balance"},
-        {"trigger": "go_back", "source": ["introduction", "keep_accounts", "watch_chart", "watch_balance"], "dest": "user"},
+        {"trigger": "advance", "source": "mainmenu", "dest": "watch_video", "conditions": "is_going_to_watch_video"},
+        {"trigger": "advance", "source": "keep_accounts", "dest": "spending_mode", "conditions": "is_going_to_spending_mode"},
+        {"trigger": "advance", "source": "keep_accounts", "dest": "earning_mode", "conditions": "is_going_to_earning_mode"},
+        {"trigger": "advance", "source": "spending_mode", "dest": "enter_spending", "conditions": "is_going_to_enter_spending"},
+        {"trigger": "advance", "source": "earning_mode", "dest": "enter_earning", "conditions": "is_going_to_enter_earning"},
+        {"trigger": "advance", "source": ["enter_spending", "enter_earning"], "dest": "mainmenu", "conditions": "is_going_to_mainmenu"},
+        {"trigger": "advance", "source": "enter_spending", "dest": "edit", "conditions": "is_going_to_edit"},
+        {"trigger": "advance", "source": "enter_earning", "dest": "edit", "conditions": "is_going_to_edit"},
+        {"trigger": "advance", "source": "edit", "dest": "edit_data", "conditions": "is_going_to_edit_data"},
+        {"trigger": "go_back", "source": ["introduction", "keep_accounts", "enter_spending", "enter_earning", "edit", "edit_data", "watch_chart", "watch_balance", "watch_video"], "dest": "user"},
+        #{"trigger": "go_back", "source": ["enter_spending", "enter_earning"], "dest": "keep_accounts"},
     ],
     initial="user",
     auto_transitions=False,
@@ -68,9 +78,7 @@ def callback():
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(text=event.message.text)
         )
-
     return "OK"
-
 
 @app.route("/webhook", methods=["POST"])
 def webhook_handler():
@@ -99,15 +107,18 @@ def webhook_handler():
         if response == False:
             send_text_message(event.reply_token, "Not Entering any State")
 
+    #user_id = event.source.user_id
+    #print("user_id =", user_id)
+    
     return "OK"
 
 
 @app.route("/show-fsm", methods=["GET"])
 def show_fsm():
     machine.get_graph().draw("fsm.png", prog="dot", format="png")
-    return send_file("fsm.png", mimetype="image/png")
-
+    return send_file("fsm.png", mimetype="image/png")    
 
 if __name__ == "__main__":
     port = os.environ.get("PORT", 8000)
+    machine.get_graph().draw("fsm.png", prog="dot", format="png")
     app.run(host="0.0.0.0", port=port, debug=True)
