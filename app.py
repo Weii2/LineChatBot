@@ -13,7 +13,7 @@ from utils import send_text_message
 load_dotenv()
 
 machine = TocMachine(
-    states=["user", "mainmenu", "introduction", "keep_accounts", "spending_mode", "earning_mode", "enter_spending", "enter_earning", "edit", "edit_data", "watch_chart", "watch_balance", "watch_video"],
+    states=["user", "mainmenu", "introduction", "keep_accounts", "spending_mode", "earning_mode", "watch_all_record", "enter_spending", "enter_earning", "edit", "edit_data", "watch_chart", "watch_balance", "watch_video", "show_fsm"],
     transitions=[
         {"trigger": "advance", "source": "user", "dest": "mainmenu", "conditions": "is_going_to_mainmenu"},
         {"trigger": "advance", "source": "mainmenu", "dest": "mainmenu", "conditions": "is_going_to_mainmenu"},
@@ -22,15 +22,17 @@ machine = TocMachine(
         {"trigger": "advance", "source": "mainmenu", "dest": "watch_chart", "conditions": "is_going_to_watch_chart"},
         {"trigger": "advance", "source": "mainmenu", "dest": "watch_balance", "conditions": "is_going_to_watch_balance"},
         {"trigger": "advance", "source": "mainmenu", "dest": "watch_video", "conditions": "is_going_to_watch_video"},
+        {"trigger": "advance", "source": "mainmenu", "dest": "show_fsm", "conditions": "is_going_to_show_fsm"},
         {"trigger": "advance", "source": "keep_accounts", "dest": "spending_mode", "conditions": "is_going_to_spending_mode"},
         {"trigger": "advance", "source": "keep_accounts", "dest": "earning_mode", "conditions": "is_going_to_earning_mode"},
+        {"trigger": "advance", "source": "keep_accounts", "dest": "watch_all_record", "conditions": "is_going_to_watch_all_record"},
         {"trigger": "advance", "source": "spending_mode", "dest": "enter_spending", "conditions": "is_going_to_enter_spending"},
         {"trigger": "advance", "source": "earning_mode", "dest": "enter_earning", "conditions": "is_going_to_enter_earning"},
         {"trigger": "advance", "source": ["enter_spending", "enter_earning"], "dest": "mainmenu", "conditions": "is_going_to_mainmenu"},
         {"trigger": "advance", "source": "enter_spending", "dest": "edit", "conditions": "is_going_to_edit"},
         {"trigger": "advance", "source": "enter_earning", "dest": "edit", "conditions": "is_going_to_edit"},
         {"trigger": "advance", "source": "edit", "dest": "edit_data", "conditions": "is_going_to_edit_data"},
-        {"trigger": "go_back", "source": ["introduction", "keep_accounts", "enter_spending", "enter_earning", "edit", "edit_data", "watch_chart", "watch_balance", "watch_video"], "dest": "user"},
+        {"trigger": "go_back", "source": ["introduction", "keep_accounts" , "watch_all_record", "enter_spending", "enter_earning", "edit", "edit_data", "watch_chart", "watch_balance", "watch_video", "show_fsm"], "dest": "user"},
         #{"trigger": "go_back", "source": ["enter_spending", "enter_earning"], "dest": "keep_accounts"},
     ],
     initial="user",
@@ -120,5 +122,5 @@ def show_fsm():
 
 if __name__ == "__main__":
     port = os.environ.get("PORT", 8000)
-    machine.get_graph().draw("fsm.png", prog="dot", format="png")
+    #machine.get_graph().draw("fsm.png", prog="dot", format="png")
     app.run(host="0.0.0.0", port=port, debug=True)

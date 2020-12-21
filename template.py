@@ -154,6 +154,38 @@ main_menu = {
         "backgroundColor": "#ff9900",
         "offsetTop": "lg"
       }
+    },
+    {
+      "type": "bubble",
+      "size": "kilo",
+      "hero": {
+        "type": "image",
+        "url": "https://i.imgur.com/yhzB3eA.png",
+        "offsetTop": "sm"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "查看fsm diagram",
+              "text": "查看fsm diagram"
+            },
+            "color": "#ffffff",
+            "offsetBottom": "sm"
+          },
+          {
+            "type": "spacer",
+            "size": "xs"
+          }
+        ],
+        "backgroundColor": "#ff9900",
+        "offsetTop": "lg",
+        "margin": "none"
+      }
     }
   ]
 }
@@ -208,6 +240,16 @@ se_type = {
           "type": "message",
           "label": "收入",
           "text": "收入"
+        }
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "message",
+          "label": "查看所有紀錄",
+          "text": "查看所有紀錄"
         }
       },
       {
