@@ -268,13 +268,12 @@ class TocMachine(GraphMachine):
         cursor.execute(f"""SELECT * FROM account_table where user_id = %s""", (event.source.user_id,))
         while True:
             temp = cursor.fetchone()
-            print(temp)
             if temp:
                 if temp[2] == True:
                     if temp[4] in s_list:
                         s_list[temp[4]] += int(temp[3])
                     else:
-                        s_list[temp[4]] = 0
+                        s_list[temp[4]] = int(temp[3])
                     total_s += int(temp[3])
                 elif temp[2] == False:
                     if temp[4] in e_list:
@@ -286,27 +285,40 @@ class TocMachine(GraphMachine):
                 break
         labels = []
         sizes = []
+        msg = "支出 :\n"
         for x, y in s_list.items():
+            msg += str(x) + '\t' + str(y) + '\n'
             labels.append(x)
             sizes.append(y)
-        plt.pie(sizes, labels=labels)
+        plt.pie(sizes, labels=labels, autopct='%1.1f%%')
         plt.axis('equal')
-        plt.show()
-        plt.savefig('chart.png', dpi=300)
-
+        plt.savefig('chart_s.png', dpi=300)
+        plt.close()
+        labels.clear()
+        sizes.clear()
+        msg += "\n收入 :\n"
+        for x, y in e_list.items():
+            msg += str(x) + '\t' + str(y) + '\n'
+            labels.append(x)
+            sizes.append(y)
+        msg += "\n請輸入'主選單'來回到主選單"
+        plt.pie(sizes, labels=labels, autopct='%1.1f%%')
+        plt.axis('equal')
+        plt.savefig('chart_e.png', dpi=300)
+        plt.close()
+    
         CLIENT_ID = "fe5468cf1e4d868"
-        PATH = "chart.png"
         im = pyimgur.Imgur(CLIENT_ID)
-        uploaded_image = im.upload_image(PATH, title="upload")
-        send_text_message(event.reply_token, uploaded_image.link)
-        print(uploaded_image.link)
-        '''
+        uploaded_image_s = im.upload_image("chart_s.png", title="upload")
+        uploaded_image_e = im.upload_image("chart_e.png", title="upload")        
+        
         reply_token = event.reply_token
-        message = message_template.introduction_message
-        message_to_reply = FlexSendMessage("開啟圖表", message)
+        message_to_reply = []
+        message_to_reply.append(ImageSendMessage(original_content_url=uploaded_image_s.link, preview_image_url=uploaded_image_s.link))
+        message_to_reply.append(ImageSendMessage(original_content_url=uploaded_image_e.link, preview_image_url=uploaded_image_e.link))
+        message_to_reply.append(TextSendMessage(msg))
         line_bot_api = LineBotApi( os.getenv('LINE_CHANNEL_ACCESS_TOKEN') )
         line_bot_api.reply_message(reply_token, message_to_reply)
-        '''
         self.go_back()
 
     def on_enter_watch_balance(self, event):
