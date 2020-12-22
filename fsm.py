@@ -298,6 +298,7 @@ class TocMachine(GraphMachine):
         PATH = "chart.png"
         im = pyimgur.Imgur(CLIENT_ID)
         uploaded_image = im.upload_image(PATH, title="upload")
+        send_text_message(event.reply_token, uploaded_image.link)
         print(uploaded_image.link)
         '''
         reply_token = event.reply_token
