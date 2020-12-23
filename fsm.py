@@ -4,6 +4,7 @@ import psycopg2
 import pandas as pd
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+from matplotlib.font_manager import FontProperties
 import pyimgur
 import json
 import requests
@@ -21,6 +22,9 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage, FlexSendM
 from utils import send_text_message
 
 import template
+
+mpl.rcParams[u'font.sans-serif'] = ['simhei']
+mpl.rcParams['axes.unicode_minus'] = False
 
 DATABASE_URL = os.environ['DATABASE_URL']
 #DATABASE_URL = os.popen('heroku config:get DATABASE_URL -a toc-final-project').read()[:-1]
