@@ -26,8 +26,8 @@ import template
 mpl.rcParams[u'font.sans-serif'] = ['simhei']
 mpl.rcParams['axes.unicode_minus'] = False
 
-DATABASE_URL = os.environ['DATABASE_URL']
-#DATABASE_URL = os.popen('heroku config:get DATABASE_URL -a toc-final-project').read()[:-1]
+#DATABASE_URL = os.environ['DATABASE_URL']
+DATABASE_URL = os.popen('heroku config:get DATABASE_URL -a toc-final-project').read()[:-1]
 '''
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 cursor = conn.cursor()
@@ -169,15 +169,15 @@ class TocMachine(GraphMachine):
         message_to_reply = FlexSendMessage("開啟主選單", message)
         line_bot_api = LineBotApi( os.getenv('LINE_CHANNEL_ACCESS_TOKEN') )
         line_bot_api.reply_message(reply_token, message_to_reply)
-    '''
+    
     def on_enter_introduction(self, event):
         reply_token = event.reply_token
-        message = template.introduction_message
+        message = template.intro
         message_to_reply = FlexSendMessage("開啟功能介紹", message)
         line_bot_api = LineBotApi( os.getenv('LINE_CHANNEL_ACCESS_TOKEN') )
         line_bot_api.reply_message(reply_token, message_to_reply)
         self.go_back()
-    '''
+    
     def on_enter_keep_accounts(self, event):
         reply_token = event.reply_token
         message = template.se_type
@@ -288,7 +288,7 @@ class TocMachine(GraphMachine):
         sizes = []
         msg = "支出 :\n"
         for x, y in s_list.items():
-            msg += str(x) + '\t' + str(y) + '\n'
+            msg += str(x) + '\t' + str(y) + " 元" + '\n'
             labels.append(x)
             sizes.append(y)
         plt.pie(sizes, labels=labels, autopct='%1.1f%%')
@@ -297,11 +297,13 @@ class TocMachine(GraphMachine):
         plt.close()
         labels.clear()
         sizes.clear()
+        msg += "支出共\t" + str(total_e) + " 元\n"
         msg += "\n收入 :\n"
         for x, y in e_list.items():
-            msg += str(x) + '\t' + str(y) + '\n'
+            msg += str(x) + '\t' + str(y) + " 元" + '\n'
             labels.append(x)
             sizes.append(y)
+        msg += "收入共\t" + str(total_s) + " 元\n"
         msg += "\n請輸入'主選單'來回到主選單"
         plt.pie(sizes, labels=labels, autopct='%1.1f%%')
         plt.axis('equal')
@@ -382,7 +384,9 @@ class TocMachine(GraphMachine):
 
     def on_enter_show_fsm(self, event):
         reply_token = event.reply_token
-        message_to_reply = ImageSendMessage(original_content_url='https://i.imgur.com/yhzB3eA.png', preview_image_url='https://i.imgur.com/yhzB3eA.png')
+        message_to_reply = []
+        message_to_reply.append(ImageSendMessage(original_content_url='https://i.imgur.com/yhzB3eA.png', preview_image_url='https://i.imgur.com/yhzB3eA.png'))
+        message_to_reply.append(TextSendMessage("請輸入'主選單'來回到主選單"))
         line_bot_api = LineBotApi( os.getenv('LINE_CHANNEL_ACCESS_TOKEN') )
         line_bot_api.reply_message(reply_token, message_to_reply)
         self.go_back()

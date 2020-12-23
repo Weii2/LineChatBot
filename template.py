@@ -567,3 +567,150 @@ yt_video = {
     }
   ]
 }
+
+intro = {
+  "type": "bubble",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "功能介紹",
+        "size": "lg",
+        "weight": "bold",
+        "align": "center"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "icon",
+            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+          },
+          {
+            "type": "text",
+            "text": "記帳 – 記錄每筆支出及收入",
+            "offsetStart": "lg"
+          }
+        ],
+        "borderWidth": "semi-bold"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "icon",
+            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+          },
+          {
+            "type": "text",
+            "text": "查看收支圖表",
+            "offsetStart": "lg"
+          }
+        ],
+        "borderWidth": "semi-bold"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "icon",
+            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+          },
+          {
+            "type": "text",
+            "text": "計算目前結餘",
+            "offsetStart": "lg"
+          }
+        ],
+        "borderWidth": "semi-bold"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "icon",
+            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+          },
+          {
+            "type": "text",
+            "text": "觀看可愛狗狗影片降低花錢慾望",
+            "offsetStart": "lg"
+          }
+        ],
+        "borderWidth": "semi-bold"
+      },
+      {
+        "type": "separator"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "使用說明",
+            "size": "lg",
+            "weight": "bold",
+            "align": "center"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "icon",
+                "url": "https://i.imgur.com/1UamX1Q.png"
+              },
+              {
+                "type": "text",
+                "text": "輸入主選單來進行操作",
+                "offsetStart": "lg"
+              }
+            ],
+            "borderWidth": "semi-bold"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "icon",
+                "url": "https://i.imgur.com/1UamX1Q.png"
+              },
+              {
+                "type": "text",
+                "text": "依照按鈕與指示來執行各項功能",
+                "offsetStart": "lg"
+              }
+            ],
+            "borderWidth": "semi-bold"
+          },
+          {
+            "type": "separator"
+          }
+        ],
+        "offsetTop": "lg"
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "返回主選單",
+          "text": "主選單"
+        }
+      }
+    ]
+  }
+}
