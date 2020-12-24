@@ -32,9 +32,35 @@ A Line bot based on a finite state machine
 ### 介紹
 * 透過介紹來查看各項功能提醒與教學
 
-![intro](https://i.imgur.com/xbO757y.png)
+![intro](https://i.imgur.com/xbO757ym.png)
 
 ### 記帳
+* 在主選單點選'記帳'功能，接著選擇要記錄'支出'或'收入'或'查看所有紀錄'
+
+![track](https://i.imgur.com/6yuC9DHm.png)
+
+* 選擇模式後依照指示輸入要記錄的資料來完成記帳
+
+![ss_com](https://i.imgur.com/8kuZSjjm.png)
+
+![ss](https://i.imgur.com/J2Av5jYm.png)
+
+### 查看收支圖表
+* 在主選單點選'查看收支圖表'功能來查看支出與收入的圖表
+
+![s_chart](https://i.imgur.com/kOkAMKtm.png)
+![e_chart](https://i.imgur.com/UDqdewgm.png)
+![chart](https://i.imgur.com/wNRlvgpm.png)
+
+### 觀看影片
+* 在主選單點選'觀看影片'功能來觀看可愛狗狗影片，
+
+![remain](https://i.imgur.com/POMe8tsm.png)
+
+### 
+* 在主選單點選'本月目前結餘'功能來查看結餘
+
+![remain](https://i.imgur.com/POMe8tsm.png)
 
 ## Finite State Machine
 ![fsm](./img/show-fsm.png)
