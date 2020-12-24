@@ -61,8 +61,8 @@ A Line bot based on a finite state machine
 ### 觀看影片
 * 在主選單點選'觀看影片'功能來觀看可愛狗狗影片，
 
-![vedio](https://i.imgur.com/vmCw4YGm.png)
+![vedio](https://i.imgur.com/vmCw4YG.png)
 
 ## Finite State Machine
-![fsm](./img/show-fsm.png)
+![fsm](https://i.imgur.com/edIeKWZ.png)
 
