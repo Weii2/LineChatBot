@@ -20,7 +20,7 @@ A Line bot based on a finite state machine
 ## 介紹
 ### 基本資訊
 #### 名稱 : 記帳幫手
-<img src="https://i.imgur.com/TisBW9J.png" width="300"> <img src="https://i.imgur.com/86Kcl7W.png" width="300">
+<img src="https://i.imgur.com/TisBW9J.png" width="300"><img src="https://i.imgur.com/86Kcl7W.png" width="300">
 
 ## 使用說明
 ### 主選單
@@ -31,12 +31,14 @@ A Line bot based on a finite state machine
 ### 介紹
 * 透過介紹來查看各項功能提醒與教學
 
-![intro](https://i.imgur.com/xbO757ym.png)
+<img src="https://i.imgur.com/xbO757y.png" width="300">
+
 
 ### 記帳
 * 在主選單點選'記帳'功能，接著選擇要記錄'支出'或'收入'或'查看所有紀錄'
 
-![track](https://i.imgur.com/6yuC9DHm.png)
+<img src="https://i.imgur.com/6yuC9DH.png" width="300">
+
 
 * 選擇模式後依照指示輸入要記錄的資料來完成記帳
 
