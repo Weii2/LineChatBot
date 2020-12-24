@@ -27,7 +27,7 @@ A Line bot based on a finite state machine
 ### 主選單
 * 輸入'主選單'來進入主選單以執行各項功能
 
-![main_menu](https://i.imgur.com/TisBW9Jm.png)
+![main_menu](https://i.imgur.com/yjacih1.png)
 
 ### 介紹
 * 透過介紹來查看各項功能提醒與教學
@@ -52,7 +52,7 @@ A Line bot based on a finite state machine
 ![e_chart](https://i.imgur.com/UDqdewgm.png)
 ![chart](https://i.imgur.com/wNRlvgpm.png)
 
-### 
+### 本月目前結餘
 * 在主選單點選'本月目前結餘'功能來查看結餘
 
 ![remain](https://i.imgur.com/POMe8tsm.png)
@@ -61,7 +61,7 @@ A Line bot based on a finite state machine
 ### 觀看影片
 * 在主選單點選'觀看影片'功能來觀看可愛狗狗影片，
 
-![remain](https://i.imgur.com/POMe8tsm.png)
+![vedio](https://i.imgur.com/vmCw4YGm.png)
 
 ## Finite State Machine
 ![fsm](./img/show-fsm.png)
