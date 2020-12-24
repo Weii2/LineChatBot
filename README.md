@@ -1,17 +1,17 @@
-# TOC Project 2020
+# LINE CharBot -- Track your Income & Expenses
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/dc7fa47fcd809b99d087/maintainability)](https://codeclimate.com/github/NCKU-CCS/TOC-Project-2020/maintainability)
-
-[![Known Vulnerabilities](https://snyk.io/test/github/NCKU-CCS/TOC-Project-2020/badge.svg)](https://snyk.io/test/github/NCKU-CCS/TOC-Project-2020)
-
-
-Template Code for TOC Project 2020
+Project for TOC 2020
 
 A Line bot based on a finite state machine
 
-More details in the [Slides](https://hackmd.io/@TTW/ToC-2019-Project#) and [FAQ](https://hackmd.io/s/B1Xw7E8kN)
+## 前言
+### 創作動機
 
-## Setup
+對於還沒邁向財富自由的大學生來說，好好管控每天的花費是必要的工作，了解金錢的流向才不會在月底時只能吃泡麵度過
+
+### 目標
+
+傳統手作雖然也是很實際的記帳方式，但相對的也需要花費較多的時間，因此此Project的目標就是製作出便利、容易操作、互動性高的記帳行聊天機器人，使用者只要依據指示就能輕鬆記帳，並透過視覺化圖表分析自己的金錢流向。
 
 ### Prerequisite
 * Python 3.6
