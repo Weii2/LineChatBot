@@ -28,19 +28,6 @@ mpl.rcParams['axes.unicode_minus'] = False
 
 DATABASE_URL = os.environ['DATABASE_URL']
 #DATABASE_URL = os.popen('heroku config:get DATABASE_URL -a toc-final-project').read()[:-1]
-'''
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-cursor = conn.cursor()
-cursor.execute(f"""SELECT * FROM account_table""", )
-data = []
-while True:
-    temp = cursor.fetchone()
-    if temp:
-        data.append(temp)
-    else:
-        break
-print(data)
-'''
 
 now_type = ''
 now_money = 0
@@ -240,10 +227,10 @@ class TocMachine(GraphMachine):
             if temp:
                 if temp[2]  == True:
                     s_list.append(temp[0])
-                    msg_s += str(len(s_list)) + temp[4] + "\t" + str(temp[3]) + "\t" + temp[5] + '\n'
+                    msg_s += str(len(s_list)) + "\t" + temp[4] + "\t" + str(temp[3]) + "\t" + temp[5] + '\n'
                 elif temp[2]  == False:
                     e_list.append(temp[0])
-                    msg_e += temp[4] + "\t" + str(temp[3]) + "\t" + temp[5] + '\n'
+                    msg_e += str(len(e_list)) + "\t" + temp[4] + "\t" + str(temp[3]) + "\t" + temp[5] + '\n'
             else:
                 break
         send_text_message(event.reply_token, msg_s + '\n' + msg_e + '\n' + "請輸入'主選單'來回到主選單")
@@ -280,7 +267,7 @@ class TocMachine(GraphMachine):
                     if temp[4] in e_list:
                         e_list[temp[4]] += int(temp[3])
                     else:
-                        e_list[temp[4]] = 0
+                        e_list[temp[4]] = int(temp[3])
                     total_e += int(temp[3])
             else:
                 break
@@ -297,13 +284,13 @@ class TocMachine(GraphMachine):
         plt.close()
         labels.clear()
         sizes.clear()
-        msg += "支出共\t" + str(total_e) + " 元\n"
+        msg += "支出共\t" + str(total_s) + " 元\n"
         msg += "\n收入 :\n"
         for x, y in e_list.items():
             msg += str(x) + '\t' + str(y) + " 元" + '\n'
             labels.append(x)
             sizes.append(y)
-        msg += "收入共\t" + str(total_s) + " 元\n"
+        msg += "收入共\t" + str(total_e) + " 元\n"
         msg += "\n請輸入'主選單'來回到主選單"
         plt.pie(sizes, labels=labels, autopct='%1.1f%%')
         plt.axis('equal')
@@ -365,12 +352,6 @@ class TocMachine(GraphMachine):
             url_list.append('https://www.youtube.com/watch?v=' + results[i]['id'])
             img_list.append(results[i]['thumbnails'][0])
             title_list.append(results[i]['title'])
-        '''
-        for i in range(5):
-            #url_list.append('https://www.youtube.com' + soup.select('.yt-lockup-video')[i].select("a[rel='spf-prefetch']")[0].get("href"))
-            print(url_list[i])
-            img_list.append(soup.select('.yt-lockup-video')[i].select('img')[0].get('src'))
-        '''
         reply_token = event.reply_token
         message = template.yt_video
         for i in range(5) :
