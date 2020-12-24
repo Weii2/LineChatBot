@@ -24,17 +24,17 @@ A Line bot based on a finite state machine
 ![bot_info](https://i.imgur.com/86Kcl7Wm.png)
 
 ## 使用說明
-The initial state is set to `user`.
+### 主選單
+* 輸入'主選單'來進入主選單以執行各項功能
 
-Every time `user` state is triggered to `advance` to another state, it will `go_back` to `user` state after the bot replies corresponding message.
+![main_menu](https://i.imgur.com/TisBW9Jm.png)
 
-* user
-	* Input: "go to state1"
-		* Reply: "I'm entering state1"
+### 介紹
+* 透過介紹來查看各項功能提醒與教學
 
-	* Input: "go to state2"
-		* Reply: "I'm entering state2"
+![intro](https://i.imgur.com/xbO757y.png)
 
+### 記帳
 
 ## Finite State Machine
 ![fsm](./img/show-fsm.png)
