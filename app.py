@@ -33,7 +33,6 @@ machine = TocMachine(
         {"trigger": "advance", "source": "enter_earning", "dest": "edit", "conditions": "is_going_to_edit"},
         {"trigger": "advance", "source": "edit", "dest": "edit_data", "conditions": "is_going_to_edit_data"},
         {"trigger": "go_back", "source": ["introduction", "keep_accounts" , "watch_all_record", "enter_spending", "enter_earning", "edit", "edit_data", "watch_chart", "watch_balance", "watch_video", "show_fsm"], "dest": "user"},
-        #{"trigger": "go_back", "source": ["enter_spending", "enter_earning"], "dest": "keep_accounts"},
     ],
     initial="user",
     auto_transitions=False,
@@ -123,5 +122,4 @@ def show_fsm():
 
 if __name__ == "__main__":
     port = os.environ.get("PORT", 8000)
-    #machine.get_graph().draw("fsm.png", prog="dot", format="png")
     app.run(host="0.0.0.0", port=port, debug=True)

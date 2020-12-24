@@ -27,7 +27,6 @@ mpl.rcParams[u'font.sans-serif'] = ['simhei']
 mpl.rcParams['axes.unicode_minus'] = False
 
 DATABASE_URL = os.environ['DATABASE_URL']
-#DATABASE_URL = os.popen('heroku config:get DATABASE_URL -a toc-final-project').read()[:-1]
 
 now_type = ''
 now_money = 0
