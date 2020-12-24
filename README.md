@@ -52,13 +52,14 @@ A Line bot based on a finite state machine
 ![e_chart](https://i.imgur.com/UDqdewgm.png)
 ![chart](https://i.imgur.com/wNRlvgpm.png)
 
-### 觀看影片
-* 在主選單點選'觀看影片'功能來觀看可愛狗狗影片，
+### 
+* 在主選單點選'本月目前結餘'功能來查看結餘
 
 ![remain](https://i.imgur.com/POMe8tsm.png)
 
-### 
-* 在主選單點選'本月目前結餘'功能來查看結餘
+
+### 觀看影片
+* 在主選單點選'觀看影片'功能來觀看可愛狗狗影片，
 
 ![remain](https://i.imgur.com/POMe8tsm.png)
 
