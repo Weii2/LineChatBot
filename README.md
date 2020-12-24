@@ -20,8 +20,7 @@ A Line bot based on a finite state machine
 ## 介紹
 ### 基本資訊
 #### 名稱 : 記帳幫手
-![main_icon](https://i.imgur.com/TisBW9Jm.png)
-![bot_info](https://i.imgur.com/86Kcl7Wm.png)
+<img src="https://i.imgur.com/TisBW9J.png" width="300"> <img src="https://i.imgur.com/86Kcl7W.png" width="300">
 
 ## 使用說明
 ### 主選單
