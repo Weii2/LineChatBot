@@ -1,159 +1,65 @@
-# TOC Project 2020
+# LINE CharBot -- Track your Income & Expenses
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/dc7fa47fcd809b99d087/maintainability)](https://codeclimate.com/github/NCKU-CCS/TOC-Project-2020/maintainability)
-
-[![Known Vulnerabilities](https://snyk.io/test/github/NCKU-CCS/TOC-Project-2020/badge.svg)](https://snyk.io/test/github/NCKU-CCS/TOC-Project-2020)
-
-
-Template Code for TOC Project 2020
+Project for TOC 2020
 
 A Line bot based on a finite state machine
 
-More details in the [Slides](https://hackmd.io/@TTW/ToC-2019-Project#) and [FAQ](https://hackmd.io/s/B1Xw7E8kN)
+## 前言
+### 創作動機
 
-## Setup
+對於還沒邁向財富自由的大學生來說，好好管控每天的花費是必要的工作，了解金錢的流向才不會在月底時只能吃泡麵度過
 
-### Prerequisite
-* Python 3.6
-* Pipenv
-* Facebook Page and App
-* HTTPS Server
+### 目標
 
-#### Install Dependency
-```sh
-pip3 install pipenv
+傳統手作雖然也是很實際的記帳方式，但相對的也需要花費較多的時間，因此此Project的目標就是製作出便利、容易操作、互動性高的記帳行聊天機器人，使用者只要依據指示就能輕鬆記帳，並透過視覺化圖表分析自己的金錢流向。
 
-pipenv --three
+## 開發環境
+* Ubuntu 18.04
+* Python 3.6.9
 
-pipenv install
+## 介紹
+### 基本資訊
+#### 名稱 : 記帳幫手
+<img src="https://i.imgur.com/TisBW9J.png" width="300"><img src="https://i.imgur.com/86Kcl7W.png" width="300">
 
-pipenv shell
-```
+## 使用說明
+### 主選單
+* 輸入'主選單'來進入主選單以執行各項功能
 
-* pygraphviz (For visualizing Finite State Machine)
-    * [Setup pygraphviz on Ubuntu](http://www.jianshu.com/p/a3da7ecc5303)
-	* [Note: macOS Install error](https://github.com/pygraphviz/pygraphviz/issues/100)
+![main_menu](https://i.imgur.com/yjacih1.png)
+
+### 介紹
+* 透過介紹來查看各項功能提醒與教學
+
+<img src="https://i.imgur.com/xbO757y.png" width="300">
 
 
-#### Secret Data
-You should generate a `.env` file to set Environment Variables refer to our `.env.sample`.
-`LINE_CHANNEL_SECRET` and `LINE_CHANNEL_ACCESS_TOKEN` **MUST** be set to proper values.
-Otherwise, you might not be able to run your code.
+### 記帳
+* 在主選單點選'記帳'功能，接著選擇要記錄'支出'或'收入'或'查看所有紀錄'
 
-#### Run Locally
-You can either setup https server or using `ngrok` as a proxy.
+<img src="https://i.imgur.com/6yuC9DH.png" width="300">
 
-#### a. Ngrok installation
-* [ macOS, Windows, Linux](https://ngrok.com/download)
 
-or you can use Homebrew (MAC)
-```sh
-brew cask install ngrok
-```
+* 選擇模式後依照指示輸入要記錄的資料來完成記帳
 
-**`ngrok` would be used in the following instruction**
+<img src="https://i.imgur.com/8kuZSjj.png" width="320">
+<img src="https://i.imgur.com/J2Av5jY.png" width="320">
 
-```sh
-ngrok http 8000
-```
+### 查看收支圖表
+* 在主選單點選'查看收支圖表'功能來查看支出與收入的圖表
 
-After that, `ngrok` would generate a https URL.
+<img src="https://i.imgur.com/kOkAMKt.png" width="300"><img src="https://i.imgur.com/UDqdewg.png" width="300"><img src="https://i.imgur.com/wNRlvgp.png" width="300">
 
-#### Run the sever
+### 本月目前結餘
+* 在主選單點選'本月目前結餘'功能來查看結餘
 
-```sh
-python3 app.py
-```
+<img src="https://i.imgur.com/POMe8ts.png" width="350">
 
-#### b. Servo
+### 觀看影片
+* 在主選單點選'觀看影片'功能來觀看可愛狗狗影片，
 
-Or You can use [servo](http://serveo.net/) to expose local servers to the internet.
-
+![vedio](https://i.imgur.com/vmCw4YG.png)
 
 ## Finite State Machine
-![fsm](./img/show-fsm.png)
+![fsm](https://i.imgur.com/edIeKWZ.png)
 
-## Usage
-The initial state is set to `user`.
-
-Every time `user` state is triggered to `advance` to another state, it will `go_back` to `user` state after the bot replies corresponding message.
-
-* user
-	* Input: "go to state1"
-		* Reply: "I'm entering state1"
-
-	* Input: "go to state2"
-		* Reply: "I'm entering state2"
-
-## Deploy
-Setting to deploy webhooks on Heroku.
-
-### Heroku CLI installation
-
-* [macOS, Windows](https://devcenter.heroku.com/articles/heroku-cli)
-
-or you can use Homebrew (MAC)
-```sh
-brew tap heroku/brew && brew install heroku
-```
-
-or you can use Snap (Ubuntu 16+)
-```sh
-sudo snap install --classic heroku
-```
-
-### Connect to Heroku
-
-1. Register Heroku: https://signup.heroku.com
-
-2. Create Heroku project from website
-
-3. CLI Login
-
-	`heroku login`
-
-### Upload project to Heroku
-
-1. Add local project to Heroku project
-
-	heroku git:remote -a {HEROKU_APP_NAME}
-
-2. Upload project
-
-	```
-	git add .
-	git commit -m "Add code"
-	git push -f heroku master
-	```
-
-3. Set Environment - Line Messaging API Secret Keys
-
-	```
-	heroku config:set LINE_CHANNEL_SECRET=your_line_channel_secret
-	heroku config:set LINE_CHANNEL_ACCESS_TOKEN=your_line_channel_access_token
-	```
-
-4. Your Project is now running on Heroku!
-
-	url: `{HEROKU_APP_NAME}.herokuapp.com/callback`
-
-	debug command: `heroku logs --tail --app {HEROKU_APP_NAME}`
-
-5. If fail with `pygraphviz` install errors
-
-	run commands below can solve the problems
-	```
-	heroku buildpacks:set heroku/python
-	heroku buildpacks:add --index 1 heroku-community/apt
-	```
-
-	refference: https://hackmd.io/@ccw/B1Xw7E8kN?type=view#Q2-如何在-Heroku-使用-pygraphviz
-
-## Reference
-[Pipenv](https://medium.com/@chihsuan/pipenv-更簡單-更快速的-python-套件管理工具-135a47e504f4) ❤️ [@chihsuan](https://github.com/chihsuan)
-
-[TOC-Project-2019](https://github.com/winonecheng/TOC-Project-2019) ❤️ [@winonecheng](https://github.com/winonecheng)
-
-Flask Architecture ❤️ [@Sirius207](https://github.com/Sirius207)
-
-[Line line-bot-sdk-python](https://github.com/line/line-bot-sdk-python/tree/master/examples/flask-echo)
