@@ -42,22 +42,18 @@ A Line bot based on a finite state machine
 
 * 選擇模式後依照指示輸入要記錄的資料來完成記帳
 
-![ss_com](https://i.imgur.com/8kuZSjjm.png)
-
-![ss](https://i.imgur.com/J2Av5jYm.png)
+<img src="https://i.imgur.com/8kuZSjj.png" width="320">
+<img src="https://i.imgur.com/J2Av5jY.png" width="320">
 
 ### 查看收支圖表
 * 在主選單點選'查看收支圖表'功能來查看支出與收入的圖表
 
-![s_chart](https://i.imgur.com/kOkAMKtm.png)
-![e_chart](https://i.imgur.com/UDqdewgm.png)
-![chart](https://i.imgur.com/wNRlvgpm.png)
+<img src="https://i.imgur.com/kOkAMKt.png" width="300"><img src="https://i.imgur.com/UDqdewg.png" width="300"><img src="https://i.imgur.com/wNRlvgp.png" width="300">
 
 ### 本月目前結餘
 * 在主選單點選'本月目前結餘'功能來查看結餘
 
-![remain](https://i.imgur.com/POMe8tsm.png)
-
+<img src="https://i.imgur.com/POMe8ts.png" width="350">
 
 ### 觀看影片
 * 在主選單點選'觀看影片'功能來觀看可愛狗狗影片，
