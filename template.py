@@ -160,7 +160,7 @@ main_menu = {
       "size": "kilo",
       "hero": {
         "type": "image",
-        "url": "https://i.imgur.com/edleKWZ.png",
+        "url": "https://i.imgur.com/1P0GA9A.png",
         "offsetTop": "sm"
       },
       "footer": {
