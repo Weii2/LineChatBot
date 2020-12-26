@@ -61,5 +61,5 @@ A Line bot based on a finite state machine
 ![vedio](https://i.imgur.com/vmCw4YG.png)
 
 ## Finite State Machine
-![fsm](https://i.imgur.com/edIeKWZ.png)
+![fsm](https://i.imgur.com/1P0GA9A.png)
 
