@@ -365,7 +365,7 @@ class TocMachine(GraphMachine):
     def on_enter_show_fsm(self, event):
         reply_token = event.reply_token
         message_to_reply = []
-        message_to_reply.append(ImageSendMessage(original_content_url='https://i.imgur.com/yhzB3eA.png', preview_image_url='https://i.imgur.com/yhzB3eA.png'))
+        message_to_reply.append(ImageSendMessage(original_content_url='https://i.imgur.com/edleKWZ.png', preview_image_url='https://i.imgur.com/yhzB3eA.png'))
         message_to_reply.append(TextSendMessage("請輸入'主選單'來回到主選單"))
         line_bot_api = LineBotApi( os.getenv('LINE_CHANNEL_ACCESS_TOKEN') )
         line_bot_api.reply_message(reply_token, message_to_reply)
